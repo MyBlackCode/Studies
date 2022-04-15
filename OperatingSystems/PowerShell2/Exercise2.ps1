@@ -6,4 +6,4 @@ ENG
 Get the contents of the text file into a string variable. Define the type of the variable
 before downloading the file contents.#>
 
-$variable = Get-Content -Path C:\Users\User\MyRepositoriesGH\OperatingSystems\Powershell2\Miesiące.txt
+[string]$variable = Get-Content -Path C:\Users\User\MyRepositoriesGH\Studies\OperatingSystems\PowerShell2\Miesiące.txt
