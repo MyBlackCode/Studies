@@ -7,7 +7,7 @@ ENG
 Write a script that handles the supply of two redundant parameters. They will
 they specify the range of numbers to be written to the standard output using a for loop.#>
 
-Host-Write "Exercise10"
+Write-Host "Exercise10"
 if(($args[0] -AND $args[1]) -EQ "" -OR ($args[0] -AND $args[1]) -EQ $null)
 { Write-Host "Musisz podać dwa parametry początek i koniec przedziału"}
 else
