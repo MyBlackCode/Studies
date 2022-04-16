@@ -1,0 +1,12 @@
+Styczeń-31dni
+Luty-28dni
+Marzec-31dni
+Kwiecień-30dni
+Maj-31dni
+Czerwiec-30dni
+Lipiec-31dni
+Sierpień-31dni
+Wrzesień-30dni
+Październik-31dni
+Listopad-30dni
+Grudzień-31dni
