@@ -1,2 +1,7 @@
 # OperatingSystems
-Here are the projects from the studies.
+PL
+Katalog OperatingSystems został stworzony przeze mnie 
+w celu umieszczania rozwiązań list zadań w ramach przedmiotu Systemy operacyjne.
+ENG
+The OperatingSystems catalog was created by me
+in order to include solutions to to-do lists within the Operating Systems subject.
