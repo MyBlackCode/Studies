@@ -1,0 +1,78 @@
+1. Do czego służy pamięć wirtualna.
+Pamięć wirtualna jest to obszar dysku który jest traktowany jako adresowalna pamięć
+masowa przez użytkownika systemu komputerowego.
+
+2. Zapoznaj się z opcjami polecenia bcdedit.
+BCDEdit pozwala:
+ Modyfikować, dodawać oraz usuwać wpisy z BCD
+ Importować oraz eksportować wpisy BCD
+ Zarządzać menedżerem rozruchu
+ Tworzyć nowe magazyny BCD dla innych instalacji
+ Kontrolować usługi zarządzania awaryjnego (EMS) dla aplikacji i systemu
+ Zmieniać opcje wpisów
+ Przeglądać listy wszystkich aktywnych wpisów
+ Stosować zmiany globalne we wszystkich magazynach BCD
+ Konfigurować debugowanie w systemie
+
+3. Jaka jest różnica między Fat i NTFS.
+Cechy systemu FAT :
+ Dostępny w systemach Windows 95/98/NT/7/8 i MS-DOS, OS/2
+ Format nazw plików 8.3
+ W Windows 95/98/NT/7 możliwe jest nadawanie plikom nazw do 255 znaków
+ Brak lokalnych zabezpieczeń
+ Rozmiar pliku nie większy niż 4 GB
+
+Cechy systemu NTFS:
+• Dostępny wyłącznie w Windows NT
+• Nazwy plików do 255 znaków
+• Automatyczne generowanie nazw plików w formacie 8.3, aby umożliwić aplikacjom w
+systemie MS-DOS pracę z plikami o długich nazwach
+•Możliwość zabezpieczeń lokalnych
+• Wymaga 2 MB przestrzeni na dysku. Nie jest zalecany dla dysków o małej pojemności
+• Klastry o rozmiarach od 512 bajtów do 64 KB
+• Dopuszczalna wielkość partycji w NTFS ma 16EB.
+• Dostępny mechanizm quoty tzn. przydzielenie danemu użytkownikowi do wykorzystania
+określonego miejsca na dysku.
+
+4. Jaki system plików pozwala na kompresję danych.
+NTFS
+
+5. Do czego służy polecenie convert.
+konwertuje pliki FAT na NTFS
+
+6. Jakie są cechy systemu NTFS oraz jego wady.
+Cechy systemu NTFS:
+• Dostępny wyłącznie w Windows NT
+• Nazwy plików do 255 znaków
+• Automatyczne generowanie nazw plików w formacie 8.3, aby umożliwić aplikacjom w
+systemie MS-DOS pracę z plikami o długich nazwach
+•Możliwość zabezpieczeń lokalnych
+• Wymaga 2 MB przestrzeni na dysku. Nie jest zalecany dla dysków o małej pojemności
+• Klastry o rozmiarach od 512 bajtów do 64 KB
+• Dopuszczalna wielkość partycji w NTFS ma 16EB.
+• Dostępny mechanizm quoty tzn. przydzielenie danemu użytkownikowi do wykorzystania
+określonego miejsca na dysku.
+
+Wady NTFS
+ Niekompatybilny z pozostałymi systemami operacyjnymi
+ Na dyskach o małej pojemności NTFS nie zdaje egzaminu przy zapisie niewielkich plików
+okazuje się że dostęp do danych trwa dłużej niż na partycjach FAT16 i FAT32
+
+7. Przetestuj skróty klawiszowe.
+
+8. Co to jest wiersz poleceń.
+wiersz poleceń - interfejs programu komputerowego w powłoce systemu, umożliwiający interaktywny 
+dostęp do funkcji lub usług systemu operacyjnego. 
+
+9. Jakie atrybuty posiada plik i katalog.
+• Atrybut tylko do odczytu (Read- only)
+• Atrybut ukryty (Hidden)
+• Atrybut systemowy (System)
+• Atrybut Archiwalny (Archive)
+
+10. Jakie wymagania systemowe ma Windows 7 .
+Wymagania:
+Procesor 1 GHz lub szybszy, 32-bitowy (x86) lub 64-bitowy (x64)*
+1 GB pamięci RAM (dla wersji 32-bitowej) lub 2 GB pamięci RAM (dla wersji 64-bitowej)
+16 GB miejsca na dysku twardym (dla wersji 32-bitowej) lub 20 GB (dla wersji 64-bitowej)
+Urządzenie graficzne z obsługą programu DirectX 9 i sterownikiem WDDM 1.0 lub nowszym
