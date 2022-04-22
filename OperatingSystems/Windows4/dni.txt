@@ -1,0 +1,11 @@
+aPoniedziałek
+aWtorek
+aŚroda
+aCzwartek
+aPiątek
+aSobota
+aCzwartek
+aNiedziela
+aCzwartek
+aPiątek
+aPoniedziałek
