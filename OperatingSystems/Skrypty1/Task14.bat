@@ -6,20 +6,22 @@
 ::Skrypt może zostać oparty zarówno na pętli for jak i instrukcji skoku goto.
 @echo off
 echo Task14
-set /P n=Podaj liczbe liczb do wygenerowania od 1 do 10:
 SETLOCAL EnableDelayedExpansion
-if %n% LEQ 10 (
-    if %n% GEQ 1 (
-	set /P s=Podaj maksymalna wartosc jaka ma zostac wygenerowana:
+if %1 LEQ 10 (
+    if %1 GEQ 1 (
 	for /L %%i in (%n%,-1,1) do (
-	    set /A liczba=%random%%%!s!+1
+	    set /A liczba=%random%%%%2+1
 	    echo !liczba!
 	)
     ) else (
 	echo Podano za maly parametr
+	pause
+	exit
     )
 ) else (
     echo Podano za duzy parametr
+    pause
+    exit
 )
 SETLOCAL DisableDelayedExpansion
 echo.
