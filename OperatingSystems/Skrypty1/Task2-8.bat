@@ -90,9 +90,13 @@ echo.
 echo Task8
 set /P a=Podaj pierwsza liczbe do zsumownia: 
 set /P b=Podaj druga liczbe do zsumowania: 
-if ((a == 0) or (b == 0))(
+if %a%==0 (
     exit
+)else (
+    if %b%==0 (
+	exit
+    )
 )
-set /A c=a+b
-echo Suma to: %c%
+set /A c=%a%+%b%
+echo Suma to:%c%
 echo.
