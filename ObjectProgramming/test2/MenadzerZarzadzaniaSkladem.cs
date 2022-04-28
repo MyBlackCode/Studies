@@ -16,37 +16,28 @@ namespace test2
         {
             _wagony = new List<Wagon>(wagony);
         }
-
-        public void AddOsobowy(Osobowy osobowy)
+        public void AddWagon(Wagon wagon)
         {
-            _wagony.Add(osobowy);
+            _wagony.Add(wagon);
+        }
+        public void AddWagon(float masa, int miejsc)
+        {
+            _wagony.Add(new Osobowy(masa, miejsc));
         }
 
-        public void AddCysterna(Cysterna cysterna)
+        public void AddWagon(float masa, float ladunek, float pojemnosc)
         {
-            _wagony.Add(cysterna);
-
+            _wagony.Add(new Cysterna(masa, ladunek, pojemnosc));
         }
 
-        public void AddPlatforma (Platforma platforma)
+        public void AddWagon(float masa, float ladunek)
         {
-            _wagony.Add(platforma);
+            _wagony.Add(new Platforma(masa, ladunek));
         }
 
-        public void DeleteWagonOsobowy(Osobowy osobowy)
+        public void DeleteWagon(Wagon wagon)
         {
-            _wagony.Remove(osobowy);
-        }
-
-        public void DeleteWagonCysterna(Cysterna cysterna)
-        {
-            _wagony.Remove(cysterna);
-
-        }
-
-        public void DeleteWagonPlatforma(Platforma platforma)
-        {
-            _wagony.Remove(platforma);
+            _wagony.Remove(wagon);
         }
 
         public void Wypisz()
