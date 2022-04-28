@@ -32,10 +32,16 @@ namespace test2
             MenadzerZarzadzaniaSkladem sklad = new MenadzerZarzadzaniaSkladem(lista_wagonow);
             sklad.Wypisz();
             Osobowy wagon4 = new Osobowy(890, 550);
-            sklad.AddOsobowy(wagon4);
+            sklad.AddWagon(wagon4);
             sklad.Wypisz();
-            sklad.DeleteWagonCysterna(wagon1);
+            sklad.DeleteWagon(wagon1);
             sklad.Wypisz();
+            sklad.AddWagon(new Osobowy(540, 300));
+            sklad.AddWagon(new Cysterna(891, 600, 900));
+            sklad.Wypisz();
+
+
+
         }
     }
 }
