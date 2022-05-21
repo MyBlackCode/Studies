@@ -1,7 +1,9 @@
 PL
 Program został stworzony w środowisku Code::Blocks.
-W linni 28 znajdują się ścieżki do plików tga dla poprawnego działania programu konieczne jest właściwe ich ustawienie.
-Wymagania odnośnie projeltu:
+W pliku main.cpp w linni 28 znajdują się ścieżki do plików tga dla poprawnego działania programu konieczne jest właściwe ich ustawienie.
+Do pliku main.cpp należy dodać pliki biblioteka.cpp oraz biblioteka.h.
+Do p
+Wymagania odnośnie projektu:
 1. Zaprojektowana grafika musi być zgodna z tematem projektu.
 2. Źródła światła powinny być sterowane przy użyciu klawiatury.
 3. Powinna być zaimplementowana możliwość zmiany intensywności oświetlenia oraz włączenia i
@@ -13,7 +15,8 @@ wyłączenia jej.
 
 ENG
 The program was created in the Code :: Blocks environment.
-There are paths to tga files in line 28 for the correct operation of the program, it is necessary to set them properly.
+There are paths to tga files in the main.cpp file in line 28 for the correct operation of the program, it is necessary to set them properly.
+The files library.cpp and library.h should be added to the main.cpp file.
 Project requirements:
 1. The designed graphics must be in line with the project topic.
 2. The light sources should be controlled with the keyboard.
