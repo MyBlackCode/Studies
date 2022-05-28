@@ -6,4 +6,4 @@
 touch $Home\info.txt
 whoami > $Home\info.txt
 cat $Home\info.txt
-chmod -rw------- $Home\info.txt
+chmod u+rw $Home\info.txt
