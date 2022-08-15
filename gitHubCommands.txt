@@ -1,0 +1,11 @@
+nvim nazwa.rozszerzenie // tworzenie pliku
+git add nazwa.rozszerzenie  // dodawanie zmian
+git commit -m "niewiadomoPoCo" // zatwierdzenie zmian
+git push // wypchniecie zmian
+git status // sprawdzanie statusu
+git rm/ do usuwania
+git clone/ klonowanie repozytoriów
+esc :wq - wyjscie z nvima z zapisaniem
+esc :q! - wyjscie z nvima bez zapisania
+i - edytuje nvima
+git pull

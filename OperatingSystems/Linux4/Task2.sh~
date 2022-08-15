@@ -1,0 +1,12 @@
+#Task2
+#Z pliku /etc/services wydobądź blok tekstu zaczynający się na tcpmux, a kończący się
+#na telnet. Zapisz go do pliku o nazwie uslugi w katalogu domowym. Z pliku
+#/etc/inetd.conf zapisz pierwsze 10 linii do pliku inet w katalogu domowym. Stwórz
+#nowy plik o nazwie info. Wstaw do niego pliki uslugi oraz inet. W pliku info opisz
+#który fragment tekstu pochodzi z którego pliku. Do wszystkich operacji użyj edytora
+#joe.
+let a=`grep -n  'tcpmux' /etc/services | cut -b 1-2`
+let b=`grep -n  'telnet' /etc/services | cut -b 1-2`
+cut -f $a-$b /etc/services >> $HOME/uslugi
+head /etc/inetd.conf >> $HOME/inet 
+cp $HOME/uslugi $HOME/inet $HOME/info

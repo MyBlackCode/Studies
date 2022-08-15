@@ -1,0 +1,73 @@
+1. Przeczytaj pomoc man dla wszystkich polecen wykorzystanych w cwiczeniu.
+man kill
+man ls
+man less
+man mkdir
+man cp
+man rm
+man chmod
+
+2. Wyswietl plik /etc/inetd.conf
+
+
+3. Wyswietl wszystkie procesy obecne w systemie (polecenie ps). Jakie parametry sa
+potrzebne do takiego wyswietlenia.
+ps -ef
+
+4. Utwórz w katalogu dmowym pliki o nazwie informacja, wprowadz do niego swoja
+nazwe uzytkownika. Ustaw prawa do odczytu i zapisu tylko dla wlasciciela pliku.
+Spróbuj odczytac pliki informacja z katalogów domowych innych uzytkowników. Jaki
+skutek?
+cd /mnt/c/Users/User
+touch informacja.txt
+
+5. Ustaw prawo do odczytu i zapisu pliku informacja dla wszystkich za pomoca zapisu
+ósemkowego.
+6. Utwórz pliki o nazwach studia, informatyka, linux. Dla pierwszego pliku ustaw prawa
+na rwxr-xr-- dla drugiego na rw-rw-rw dla trzeciego r--r-----. Wykonaj to za pomoca
+polecenia chmod i parametrów tekstowych.
+7. Utwórz pliki o nazwach politechnika, czestochowa. Dla pierwszego pliku ustaw prawa
+na rw-rw-r-- dla drugiego na rw-r--r-- dla trzeciego r--r--r--. Wykonaj to za pomoca
+polecenia chmod i parametru w postaci liczby ósemkowej.
+8. Utwórz katalog o nazwie cwiczenie2, przenies do niego pliki z powyzszych dwóch
+punktów. Zmien prawa dostepu dla katalogu na rw------- Czy jestes w stanie przejrzec
+zawartosc katalogu?
+9. Dodaj uprawnienia do wykonywania dla katalogu cwiczenie2. Jednak przy poleceniu
+chmod omin opcje dotyczace uzytkowników. Jaki efekt?
+10. Postaraj sie zmienic uprawnienia dla wszystkich plików w katalogu cwiczenie2
+jednoczesnie. Czy udalo sie to zrobic?
+11. Wykonaj nastepujace polecenie >stud Jaki dalo efekt?
+12. Spróbuj zmienic wlasciciela katalogu /sbin na student. Jaki efekt? Jesli byl jakis
+komunikat o bledzie wyprowadz go do pliku err
+13. Utwórz plik o nazwie wlasciciel w swoim katalogu. Zmien wlasciciela na root. Czy
+operacje zmiany wlasciciela moze wykonywac kazdy uzytkownik?
+14. Wyswietl pierwsze 7 linii pliku /etc/services
+15. Wyswietl ostatnie 15 linii pliku /etc/services
+16. Pokaz wszystkie linie zawierajace tekst „http” w pliku /etc/services
+17. Sprawdz przy pomocy ps i grep (przetwarzanie potokowe) czy w uruchomionych
+procesach w systemie sa procesy o nazwie bash.
+18. Uzyj polecenia ps -ax i postaraj sie zakonczyc proces o numerze 100.
+19. Uruchom w tle program top. Zakoncz go uzywajac polecenia kill.
+20. Uruchom w tle program top. Przenies go na pierwszy plan za pomoca fg. Wyjscie z
+programu top po wcisnieciu klawisza q.
+21. Wyswietl plik /etc/termcap uzywajac polecen cat, more, less
+22. Zapisz do pliku zawartosc katalogu /usr/doc. Do tego samego pliku dolacz zawartosc
+katalogu /usr/local. Zobacz plik z wynikami.
+23. Sprawdz zawartosc zmiennej TERM za pomoca echo oraz set i grep. Jakie sa róznice
+w wynikach?
+24. Wyswietl kalendarz na rok 2002 i pokaz wszystkie linie zawierajace wyrazy Su,
+December, January.
+25. Stwórz zmienna o dowolnej nazwie oraz wartosci. Wyswietl jej wartosc i wyprowadz
+ja do pliku.
+26. Czy wsród zmiennych srodowiskowych istnieja zmienne USER, UID, DIR,
+HOSTNAME, PWD. Jesli tak wyprowadz ich wartosc oraz nazwy do pliku (polecenia
+set i grep).
+27. Wyswietl komunikat „Test dzialania polecenia echo”
+28. Sprawdz dzialanie polecenia top. Jaki proces zuzywa najwiecej czasu procesora?
+29. Za pomoca man znajdz opis polecenia find i wyszukaj wszystkie pliki w katalogu
+domowym zawierajace litere s. Wyniki przeslij do pliku o nazwie lista
+30. Utwórz plik o dowolnej nazwie i nadaj mu uprawnienia do wykonywania. Uruchom
+go. Jaki efekt?
+31. Usun wszystkie pliki z katalogu domowego (oprócz ukrytych). Czy udalo sie usunac
+wszystkie pliki? Jesli nie to zmien odpowiednie uprawnienia i usun.
+o

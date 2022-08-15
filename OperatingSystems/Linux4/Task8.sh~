@@ -1,0 +1,6 @@
+#Task8
+#Napisz skrypt wyświetlający same nazwy użytkowników aktualnie zalogowanych w
+#systemie.
+who -u
+#-u, --użytkownicy
+#lista zalogowanych użytkowników 
