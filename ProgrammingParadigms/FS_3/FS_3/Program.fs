@@ -199,11 +199,11 @@ Console.WriteLine($"[{lista}] > [{lista2}] = [{(CzyPierwszaListaWieksza (lista, 
 //nieistniejący.
 Console.WriteLine("\n3.15")
 type Enum =
-    | Pierwszy = 'P'
-    | Drugi = 'D'
+    | Pierwszy 
+    | Drugi 
 
-let rec CzyPierwszaListaWieksza2 (liata1 : Lista<int>, lista2 : Lista<int>) = 
-        match liata1, lista2 with
+let rec CzyPierwszaListaWieksza2 (lista1 : Lista<int>, lista2 : Lista<int>) = 
+        match lista1, lista2 with
         | Wezel(glowa1, ogon1), Wezel(glowa2, ogon2) when glowa1 > glowa2 ->  Wezel(Enum.Pierwszy, CzyPierwszaListaWieksza2(ogon1, ogon2))
         | Wezel(glowa1, ogon1), Wezel(glowa2, ogon2) ->  Wezel(Enum.Drugi, CzyPierwszaListaWieksza2(ogon1, ogon2))
         | Wezel(glowa1, ogon1), Pusta -> Wezel(Enum.Pierwszy, CzyPierwszaListaWieksza2(ogon1, Pusta))
@@ -213,3 +213,90 @@ let rec CzyPierwszaListaWieksza2 (liata1 : Lista<int>, lista2 : Lista<int>) =
 
 let lista3 = ListaLiczbNaturalnych 7
 Console.WriteLine($"[{lista3}] > [{lista2}] = [{(CzyPierwszaListaWieksza2 (lista3, lista2))}]")
+
+//3.16 Napisz funkcję, która sprawdzi, czy lista elementów jest posortowana. Kierunek sortowania
+//(malejący lub rosnący) powinnien być zdefiniowany jako typ wyliczeniowy i przekazywany do funkcji.
+Console.WriteLine("\n3.16")
+type Kierunek =
+    | Malejacy
+    | Rosnacy
+
+let rec CzyPosortowana (lista1 : Lista<'a>, lista2 : Lista<'a>, kierunek : Kierunek) =
+    match lista1, lista2 with
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (glowa1<glowa2 && kierunek =Malejacy) -> CzyPosortowana(ogon1,(Wezel(glowa1,lista2)), kierunek)
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (glowa1>glowa2 && kierunek =Rosnacy) -> CzyPosortowana(ogon1,(Wezel(glowa1,lista2)), kierunek)
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when ((kierunek = Rosnacy)|| (kierunek = Malejacy))-> false
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) -> failwith "Brak okreslonego kierunku"
+    | Wezel (glowa1, ogon1), Pusta -> CzyPosortowana(ogon1,(Wezel(glowa1,lista2)), kierunek)
+    | Pusta, Wezel (glowa2, ogon2) -> true
+    | Pusta, Pusta -> true
+
+Console.WriteLine($"[{lista3}] -> Posortowana malejąco? -> [{(CzyPosortowana (lista3, Pusta, Kierunek.Malejacy))}]")
+Console.WriteLine($"[{lista3}] -> Posortowana rosnąco? -> [{(CzyPosortowana (lista3, Pusta, Kierunek.Rosnacy))}]")
+Console.WriteLine($"[{lista2}] -> Posortowana rosnąco? -> [{(CzyPosortowana (lista2, Pusta, Kierunek.Rosnacy))}]")
+Console.WriteLine($"[{lista2}] -> Posortowana malejąco? -> [{(CzyPosortowana (lista2, Pusta, Kierunek.Malejacy))}]")
+
+let rec SortujListe (lista1 : Lista<'a>, lista2 : Lista<'a>, kierunek : Kierunek) =
+    match lista1, lista2 with
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (glowa1>glowa2 && kierunek =Malejacy) -> SortujListe(ogon1,(Wezel(glowa1,lista2)), kierunek)
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (kierunek = Malejacy) -> SortujListe(ogon1, OdwrocListe ((Wezel(glowa1, (OdwrocListe (lista2, Pusta)))), Pusta), kierunek)
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (glowa1<glowa2 && kierunek =Rosnacy) -> SortujListe(ogon1,(Wezel(glowa1,lista2)), kierunek)
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (kierunek = Rosnacy) -> SortujListe(ogon1, OdwrocListe ((Wezel(glowa1, (OdwrocListe (lista2, Pusta)))), Pusta), kierunek)
+    | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) -> failwith "Brak okreslonego kierunku"
+    | Wezel (glowa1, ogon1), Pusta -> SortujListe(ogon1,(Wezel(glowa1,lista2)), kierunek)
+    | Pusta, Wezel (glowa2, ogon2) -> lista2
+    | Pusta, Pusta -> lista2
+
+Console.WriteLine($"\n[{lista3}] -> sortuj malejąco -> [{(SortujListe (lista3, Pusta, Kierunek.Malejacy))}]")
+Console.WriteLine($"[{lista2}] -> sortuj rosnąco -> [{(SortujListe (lista2, Pusta, Kierunek.Rosnacy))}]")
+
+//3.17 Napisz funkcję, która będzie przyjmowała dwie posortowane listy liczb całkowitych
+//(listy powinny być posortowane w tym samym kierunku).Funkcja powinna łączyć te dwie listy 
+//z zachowaniem porządku
+Console.WriteLine("\n3.17")
+let rec PolaczPosortowane (lista1 : Lista<'a>, lista2 : Lista<'a>, lista3 : Lista<'a>) =
+    if (CzyPosortowana (lista1, Pusta, Kierunek.Rosnacy)) && (CzyPosortowana (lista2, Pusta, Kierunek.Rosnacy))= true then
+        match lista1, lista2 with
+            | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (glowa1 < glowa2) -> PolaczPosortowane (ogon1, lista2, Wezel(glowa1,lista3))
+            | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) -> PolaczPosortowane (lista1, ogon2, Wezel(glowa2,lista3))
+            | Wezel (glowa1, ogon1), Pusta -> PolaczPosortowane (ogon1, lista2, Wezel(glowa1,lista3))
+            | Pusta, Wezel (glowa2, ogon2) -> PolaczPosortowane (lista1, ogon2, Wezel(glowa2,lista3))
+            | Pusta, Pusta -> OdwrocListe (lista3, Pusta)
+    elif (CzyPosortowana (lista1, Pusta, Kierunek.Malejacy)) && (CzyPosortowana (lista2, Pusta, Kierunek.Malejacy)) = true then
+        match lista1, lista2 with
+            | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) when (glowa1 > glowa2) -> PolaczPosortowane (ogon1, lista2, Wezel(glowa1,lista3))
+            | Wezel (glowa1, ogon1), Wezel (glowa2, ogon2) -> PolaczPosortowane (lista1, ogon2, Wezel(glowa2,lista3))
+            | Wezel (glowa1, ogon1), Pusta -> PolaczPosortowane (ogon1, lista2, Wezel(glowa1,lista3))
+            | Pusta, Wezel (glowa2, ogon2) -> PolaczPosortowane (lista1, ogon2, Wezel(glowa2,lista3))
+            | Pusta, Pusta -> OdwrocListe (lista3, Pusta)
+    else
+        failwith "Listy nie są posortowane w tym samym kierunku"
+
+Console.WriteLine($"[{lista}] U [{lista3}] = [{(PolaczPosortowane (lista, lista3, Pusta))}]")
+let lista4 = OdwrocListe (lista3, Pusta)
+Console.WriteLine($"[{lista2}] U [{lista4}] = [{(PolaczPosortowane (lista2, lista4, Pusta))}]")
+
+//3.18 Zaimplementuj stos wykorzystując przedstawioną listę łączoną.
+Console.WriteLine("\n3.18")
+type Stos<'b> = 
+    {
+        stos: Lista<'b>
+    }
+    member this.Wartsc() :'b =
+        match this.stos with
+        | Pusta -> failwith "Pusty stos"
+        | Wezel(glowa,ogon) -> glowa
+        
+    member this.Dodaj(glowa:'b) : Stos<'b> = 
+        {stos = Wezel(glowa, this.stos)}
+        
+    member this.Zdejmij() : Stos<'b> =
+        match this.stos with
+        | Pusta -> failwith "Pusty stos"
+        | Wezel(glowa,ogon) -> {stos=ogon}
+        
+    
+let st = {stos=Pusta}.Dodaj(1).Dodaj(2).Dodaj(3)
+Console.WriteLine($"{st} -> wartos -> {st.Wartsc()}")
+let st2 = st.Zdejmij()
+Console.WriteLine($"{st2} -> wartos -> {st2.Wartsc()}")
