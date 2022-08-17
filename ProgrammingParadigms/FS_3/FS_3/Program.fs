@@ -282,7 +282,7 @@ type Stos<'b> =
     {
         stos: Lista<'b>
     }
-    member this.Wartsc() :'b =
+    member this.Wartosc() :'b =
         match this.stos with
         | Pusta -> failwith "Pusty stos"
         | Wezel(glowa,ogon) -> glowa
@@ -297,6 +297,56 @@ type Stos<'b> =
         
     
 let st = {stos=Pusta}.Dodaj(1).Dodaj(2).Dodaj(3)
-Console.WriteLine($"{st} -> wartos -> {st.Wartsc()}")
+Console.WriteLine($"{st} -> wartos -> {st.Wartosc()}")
 let st2 = st.Zdejmij()
-Console.WriteLine($"{st2} -> wartos -> {st2.Wartsc()}")
+Console.WriteLine($"{st2} -> wartos -> {st2.Wartosc()}")
+
+//3.19 Zaimplementuj mapę wykorzystując ptzedstawioną liczbę łączoną. Na liście przechowuj pary 
+//elementów (klucz; wartość). Dostęp do dowolnego elementu powinien następować po podaniu klucza
+
+//type Mapa =
+//    {
+ //        mapa: Lista<'key*'value>
+ //   }
+ //   member this.Wartosc(k:'key)=
+ //       let rec f  map =
+ //           match map with
+ //           | Pusta -> failwith "Pusty stos"
+ //           | Wezel((glowak,glowav),(ogon)) -> if (glowak=k) then (glowak,glowav) else  f ogon
+ //       f this.mapa
+        
+    //member this.Dodaj(glowa:'key*'value) : Stos<'b> = 
+      // {stos = Wezel(glowa, this.stos)}
+        
+    //member this.Zdejmij() : Stos<'key*'value> =
+     //   match this.stos with
+//| Pusta -> failwith "Pusty stos"
+     //   | Wezel(glowa,ogon) -> {stos=ogon}
+
+//3.20 Napisz funkcję, która będzie zliczała liczbę elementów na drzewie binarnym.
+Console.WriteLine("\n3.20")
+type Drzewo =
+
+    |Pusta
+    |Wezel of float * Drzewo * Drzewo
+
+    override this.ToString()=
+        match this with
+        |Wezel(x,l,p) -> $" {l}<{x}>{p} "
+        |Pusta -> "()"
+let rec ZliczElementyDrzewa = function
+    |Pusta -> 0
+    |Wezel(x,l,p) -> 1 + ZliczElementyDrzewa l + ZliczElementyDrzewa p
+
+let s = Wezel(4.0, Wezel(2.0,Wezel(1.0,Pusta,Pusta),Wezel(3.0,Pusta,Pusta)), Wezel(7.0,Wezel(6.0,Pusta,Pusta),Wezel(8.0,Pusta,Pusta)))
+let s2 = Wezel(4.0, Wezel(2.0,Wezel(1.0,Pusta,Pusta),Pusta), Wezel(7.0, Pusta, Wezel(8.0,Pusta,Pusta)))
+Console.WriteLine($"{s} => liczba elementów tego drzewa to: {ZliczElementyDrzewa s}")
+Console.WriteLine($"{s2} => liczba elementów tego drzewa to: {ZliczElementyDrzewa s2}")
+
+//3.21 Napisz funkcję, która oblicz sumę wartości przechowywanych w drzewie binarnym.
+Console.WriteLine("\n3.21")
+let rec SumujElementyDrzewa = function
+    |Pusta -> 0.0
+    |Wezel(x,l,p) -> x + SumujElementyDrzewa l + SumujElementyDrzewa p
+Console.WriteLine($"{s} => suma elementów tego drzewa to: {SumujElementyDrzewa s}")
+Console.WriteLine($"{s2} => suma elementów tego drzewa to: {SumujElementyDrzewa s2}")
