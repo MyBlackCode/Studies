@@ -304,25 +304,6 @@ Console.WriteLine($"{st2} -> wartos -> {st2.Wartosc()}")
 //3.19 Zaimplementuj mapę wykorzystując ptzedstawioną liczbę łączoną. Na liście przechowuj pary 
 //elementów (klucz; wartość). Dostęp do dowolnego elementu powinien następować po podaniu klucza
 
-//type Mapa =
-//    {
- //        mapa: Lista<'key*'value>
- //   }
- //   member this.Wartosc(k:'key)=
- //       let rec f  map =
- //           match map with
- //           | Pusta -> failwith "Pusty stos"
- //           | Wezel((glowak,glowav),(ogon)) -> if (glowak=k) then (glowak,glowav) else  f ogon
- //       f this.mapa
-        
-    //member this.Dodaj(glowa:'key*'value) : Stos<'b> = 
-      // {stos = Wezel(glowa, this.stos)}
-        
-    //member this.Zdejmij() : Stos<'key*'value> =
-     //   match this.stos with
-//| Pusta -> failwith "Pusty stos"
-     //   | Wezel(glowa,ogon) -> {stos=ogon}
-
 //3.20 Napisz funkcję, która będzie zliczała liczbę elementów na drzewie binarnym.
 Console.WriteLine("\n3.20")
 type Drzewo =
@@ -350,3 +331,31 @@ let rec SumujElementyDrzewa = function
     |Wezel(x,l,p) -> x + SumujElementyDrzewa l + SumujElementyDrzewa p
 Console.WriteLine($"{s} => suma elementów tego drzewa to: {SumujElementyDrzewa s}")
 Console.WriteLine($"{s2} => suma elementów tego drzewa to: {SumujElementyDrzewa s2}")
+
+//3.22 Napisz funkcję pozwalającą usunąć  element z uporządkowanego drzewa binarnego.
+Console.WriteLine("\n3.22")
+let rec UsunElementDrzewa n = function
+    |Pusta -> Pusta
+    |Wezel(x,l,p) when n = x -> Pusta
+    |Wezel(x,l,p) when n < x -> Wezel(x,  UsunElementDrzewa n l, p)
+    |Wezel (x,l,p) -> Wezel(x,l, UsunElementDrzewa n p)
+
+Console.WriteLine($"{s} => drzewo po usunięciu 6 elementu => {UsunElementDrzewa 6 s}")
+
+//3.23 Napisz funkcję pozwalającą określić czy w iporządkowanym drzewie binarnym 
+//znajduje się podana wartość.
+Console.WriteLine("\n3.23")
+let rec CzyElementNaDrzewie n = function
+    |Pusta -> false
+    |Wezel(x,l,p) when n = x -> true
+    |Wezel(x,l,p) when n < x -> CzyElementNaDrzewie n l
+    |Wezel (x,l,p) ->CzyElementNaDrzewie n p
+
+Console.WriteLine($"{s} =>  czy element 5 jest na drzewie => {CzyElementNaDrzewie 5 s}")
+Console.WriteLine($"{s} =>  czy element 3 jest na drzewie => {CzyElementNaDrzewie 3 s}")
+
+//3.24 Ścieżką do węzła n w drzewie nazywamy kolekcję wszystkich węzłów prowadzących od korzenia
+//do tego węzła. Przykładowo, dla drzewa z rys. 3.9, ścieżka do węzła 8.0 to {4.0, 7.0, 8.0}.
+//Napisz funkcję zwracającą ścieżkę do węzła z określoną wartością ( dla uproszczenia zakładamy,
+//że wartości w drzewie się nie powtarzają)
+
