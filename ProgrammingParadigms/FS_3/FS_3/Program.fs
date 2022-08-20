@@ -307,49 +307,62 @@ Console.WriteLine($"{st2} -> wartos -> {st2.Wartosc()}")
 //3.20 Napisz funkcję, która będzie zliczała liczbę elementów na drzewie binarnym.
 Console.WriteLine("\n3.20")
 type Drzewo =
-
-    |Pusta
-    |Wezel of float * Drzewo * Drzewo
+    |Puste
+    |WezelD of float * Drzewo * Drzewo
 
     override this.ToString()=
         match this with
-        |Wezel(x,l,p) -> $" {l}<{x}>{p} "
-        |Pusta -> "()"
-let rec ZliczElementyDrzewa = function
-    |Pusta -> 0
-    |Wezel(x,l,p) -> 1 + ZliczElementyDrzewa l + ZliczElementyDrzewa p
+        |WezelD(x,l,p) -> $" ({l}<{x}>{p}) "
+        |Puste -> "()"
 
-let s = Wezel(4.0, Wezel(2.0,Wezel(1.0,Pusta,Pusta),Wezel(3.0,Pusta,Pusta)), Wezel(7.0,Wezel(6.0,Pusta,Pusta),Wezel(8.0,Pusta,Pusta)))
-let s2 = Wezel(4.0, Wezel(2.0,Wezel(1.0,Pusta,Pusta),Pusta), Wezel(7.0, Pusta, Wezel(8.0,Pusta,Pusta)))
+let rec ZliczElementyDrzewa = function
+    |Puste -> 0
+    |WezelD(x,l,p) -> 1 + ZliczElementyDrzewa l + ZliczElementyDrzewa p
+
+let s = WezelD(4.0, WezelD(2.0,WezelD(1.0,Puste,Puste),WezelD(3.0,Puste,Puste)), WezelD(7.0,WezelD(6.0,Puste,Puste),WezelD(8.0,Puste,Puste)))
+let s2 = WezelD(4.0, WezelD(2.0,WezelD(1.0,Puste,Puste),Puste), WezelD(7.0, Puste, WezelD(8.0,Puste,Puste)))
 Console.WriteLine($"{s} => liczba elementów tego drzewa to: {ZliczElementyDrzewa s}")
 Console.WriteLine($"{s2} => liczba elementów tego drzewa to: {ZliczElementyDrzewa s2}")
 
 //3.21 Napisz funkcję, która oblicz sumę wartości przechowywanych w drzewie binarnym.
 Console.WriteLine("\n3.21")
 let rec SumujElementyDrzewa = function
-    |Pusta -> 0.0
-    |Wezel(x,l,p) -> x + SumujElementyDrzewa l + SumujElementyDrzewa p
+    |Puste -> 0.0
+    |WezelD(x,l,p) -> x + SumujElementyDrzewa l + SumujElementyDrzewa p
 Console.WriteLine($"{s} => suma elementów tego drzewa to: {SumujElementyDrzewa s}")
 Console.WriteLine($"{s2} => suma elementów tego drzewa to: {SumujElementyDrzewa s2}")
 
 //3.22 Napisz funkcję pozwalającą usunąć  element z uporządkowanego drzewa binarnego.
 Console.WriteLine("\n3.22")
+let rec zlacz drzewo1 drzewo2 =
+    match drzewo1, drzewo2 with
+    |Puste, Puste -> Puste
+    |Puste, WezelD (x2,l2,p2) -> drzewo2
+    |WezelD (x1,l1,p1), Puste -> drzewo1
+    |WezelD (x1,l1,p1), WezelD (x2,l2,p2) when (l1 = Puste) && (x2 <= x1) -> WezelD (x1,drzewo2,l2)
+    |WezelD (x1,l1,p1), WezelD (x2,l2,p2) when (p1 = Puste) && (x2 >= x1) -> WezelD (x1,l1,drzewo2)
+    |WezelD (x1,l1,p1), WezelD (x2,l2,p2) when x2 < x1 -> zlacz l1 drzewo2
+    |WezelD (x1,l1,p1), WezelD (x2,l2,p2) -> zlacz p1 drzewo2
+    
+    
+    
 let rec UsunElementDrzewa n = function
-    |Pusta -> Pusta
-    |Wezel(x,l,p) when n = x -> Pusta
-    |Wezel(x,l,p) when n < x -> Wezel(x,  UsunElementDrzewa n l, p)
-    |Wezel (x,l,p) -> Wezel(x,l, UsunElementDrzewa n p)
+    |Puste -> Puste
+    |WezelD(x,l,p) when n = x -> zlacz l p
+    |WezelD(x,l,p) when n < x -> WezelD(x,  UsunElementDrzewa n l, p)
+    |WezelD (x,l,p) -> WezelD(x,l, UsunElementDrzewa n p)
 
-Console.WriteLine($"{s} => drzewo po usunięciu 6 elementu => {UsunElementDrzewa 6 s}")
+Console.WriteLine($"{s} => drzewo po usunięciu 6 elementu => {UsunElementDrzewa 7 s}")
 
-//3.23 Napisz funkcję pozwalającą określić czy w iporządkowanym drzewie binarnym 
+//3.23 Napisz funkcję pozwalającą określić czy w uporządkowanym drzewie binarnym 
 //znajduje się podana wartość.
 Console.WriteLine("\n3.23")
 let rec CzyElementNaDrzewie n = function
-    |Pusta -> false
-    |Wezel(x,l,p) when n = x -> true
-    |Wezel(x,l,p) when n < x -> CzyElementNaDrzewie n l
-    |Wezel (x,l,p) ->CzyElementNaDrzewie n p
+    |Puste -> false
+    |WezelD(x,l,p) when n = x -> true
+    |WezelD(x,l,p) when n < x -> CzyElementNaDrzewie n l
+    |WezelD(x,l,p) ->CzyElementNaDrzewie n p
+
 
 Console.WriteLine($"{s} =>  czy element 5 jest na drzewie => {CzyElementNaDrzewie 5 s}")
 Console.WriteLine($"{s} =>  czy element 3 jest na drzewie => {CzyElementNaDrzewie 3 s}")
@@ -358,4 +371,22 @@ Console.WriteLine($"{s} =>  czy element 3 jest na drzewie => {CzyElementNaDrzewi
 //do tego węzła. Przykładowo, dla drzewa z rys. 3.9, ścieżka do węzła 8.0 to {4.0, 7.0, 8.0}.
 //Napisz funkcję zwracającą ścieżkę do węzła z określoną wartością ( dla uproszczenia zakładamy,
 //że wartości w drzewie się nie powtarzają)
+Console.WriteLine("\n3.24")
+let rec Dodaj (v:float, d: Drzewo) :Drzewo =  
+        match d with
+        | Puste -> WezelD(v, Puste, Puste)
+        | WezelD(wv, l, p) when wv <= v -> WezelD(wv, l ,Dodaj (v, p) )
+        | WezelD(wv, l, p) -> WezelD(wv, Dodaj (v, l) , p )
 
+    
+let rec Sciezka (v:float, d: Drzewo) : Lista<float> =  
+        match d with
+        | Puste -> Pusta
+        | WezelD(wv, l, p) when wv <= v -> Wezel(wv, Sciezka(v, p) )
+        | WezelD(wv, l, p) -> Wezel(wv, Sciezka(v, l) )
+
+let d = Dodaj(5, Dodaj(6,Dodaj(8,Dodaj(-10,Dodaj(2,Dodaj(3, Puste))))))    
+Console.WriteLine($"{d} => scizka {6} -> {Sciezka (6, d)}")
+
+//3.25 Napisz funkcję, która dla drzewa binarnego zwraca jego głębokość, czyli
+//liczbę elementów w jego najdłuższej gałęzi.
