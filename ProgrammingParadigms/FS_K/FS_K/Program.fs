@@ -233,5 +233,19 @@ let wprowadz = fun () ->
 wprowadz()
 
 //17. Zdefiniuj nowy typ danych, który będzie reprezentował liczbę zespoloną. Następnie napisz
-//funkcję pozwalającą dodawać  te liczby wg. wzoru: (a1+b1*i)+(a2+ b2*i)=(a1+a2)(b1+b2)*i
+//funkcję pozwalającą dodawać  te liczby wg. wzoru: (a1+b1*i)+(a2+ b2*i)=(a1+a2)+(b1+b2)*i
 Console.WriteLine("\nZad_17")
+
+type Zespolona =
+     {
+        rzeczywista: float
+        urojona: float
+     }
+     static member (+) (a:Zespolona, b:Zespolona) :Zespolona = 
+            {rzeczywista =(a.rzeczywista + b.rzeczywista); urojona = (a.urojona + b.urojona)}
+
+     override this.ToString() = $"({this.rzeczywista} + {this.urojona}*i)"
+
+let z1 = {rzeczywista = 1; urojona = 2}
+let z2 = {rzeczywista = 4; urojona = 2}
+Console.WriteLine($"{z1} + {z2} = {z1+z2}")
