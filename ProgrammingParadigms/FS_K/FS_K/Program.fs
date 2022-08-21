@@ -96,7 +96,7 @@ let rec Wczytaj (lista:Lista<string>) :Lista<string> =
 let text = Wczytaj Pusta
 Console.WriteLine($"Wczytana lista to: {text}")
 
-let rec OdwrocListe ((lista1:Lista<string>), (lista2:Lista<string>)):Lista<string> =
+let rec OdwrocListe ((lista1:Lista<'a>), (lista2:Lista<'a>)):Lista<'a> =
     match lista1 with
     | Pusta -> lista2
     | Wezel (glowa, ogon) -> OdwrocListe(ogon,Wezel(glowa,lista2))
@@ -139,6 +139,18 @@ Console.WriteLine($"{lista} -> wyrazów zaczynających się na a jest: {literaA(
 //typu. Następnie napisz funkcję zwracającą wartość logiczną, która określi, czy wszystkie elementy
 //listy spełniają określony warunek określony jako parametr. Zademonstruj jej działanie 
 Console.WriteLine("\nZad_9")
+//let rec OdwrocListe(lista : Lista<'a>, odwroconaLista : Lista<'a>) : (Lista<'a>) = 
+//       match lista with
+//       | Wezel(glowa, ogon) ->  OdwrocListe(ogon, Wezel(glowa, odwroconaLista))
+//       | Pusta ->  odwroconaLista
+let rec Logiczna warunek (lista:Lista<'a>) lista2  =
+    match lista with
+        |Pusta -> OdwrocListe(lista2, Pusta)
+        |Wezel(glowa,ogon) when warunek(glowa) -> Logiczna warunek ogon (Wezel(true , lista2))
+        |Wezel(glowa, ogon) -> Logiczna warunek ogon (Wezel(false, lista2))
+
+let lista3 = Wezel(-2,Wezel(2,Wezel(3,Wezel(-8,Wezel(1,Pusta)))))
+Console.WriteLine($"{lista3} jezeli wieksze niz zero -> {Logiczna (fun x->x>0) lista3 Pusta}")
 
 //10. Zdefiniuj nowy typ danych reprezentujący drzewo binarne. Następnie napisz program, 
 //który określi ile w tym drzewie było węzłów z wartością mniejszą od zadanej liczby. 
@@ -175,26 +187,56 @@ Console.WriteLine($"{s} => liczba wezlow mniejsza od 8 => {LWezlowMniejsza (8.0,
 //która policzy sumę wartości w węzłach spełniających warunek określony w funkcji przekazanej 
 //jako parametr. Zademnostruj jej działanie.  
 Console.WriteLine("\nZad_11")
-let rec SumujElementyDrzewa = function
+let rec SumujElementyDrzewa warunek = function
     |Puste -> 0.0
-    |Wezel(x,l,p) -> x + SumujElementyDrzewa l + SumujElementyDrzewa p
-Console.WriteLine($"{s} => suma elementów tego drzewa to: {SumujElementyDrzewa s}")
+    |Wezel(x,l,p) when warunek(x) -> x + SumujElementyDrzewa warunek l + SumujElementyDrzewa warunek p
+    |Wezel(x,l,p) -> 0.0 + SumujElementyDrzewa warunek l + SumujElementyDrzewa warunek p
+Console.WriteLine($"{s} => suma elementów tego drzewa spelniająca warunek x>4 to: {SumujElementyDrzewa (fun x->x>4) s}")
 
 //12. Zdefiniuj nowy typ danych reprezentujący drzewo binarne. Następnie napisz funkcję, która
 //policzy ile węzłów spełnia warunek  określony w funkcji przekazanej jako parametr. Zademonstruj
 //jej działanie.
 Console.WriteLine("\nZad_12")
+let rec IleWezlowSpelnia warunek = function
+    |Puste -> 0
+    |Wezel(x,l,p) when warunek(x) -> 1 + IleWezlowSpelnia warunek l + IleWezlowSpelnia warunek p
+    |Wezel(x,l,p) -> 0 + IleWezlowSpelnia warunek l + IleWezlowSpelnia warunek p
+Console.WriteLine($"{s} => liczba wezłów tego drzewa spełniająca warunek to: {IleWezlowSpelnia (fun x->x>4) s}")
+
 
 //13. Napisz program, który utworzy listę 100 dwuwymiarowych punktów losowych z przedziału 
 //od -20 do 20. Następnie napisz program, który podzieli te punkty na dwie grupy. 
 //Pierwsza powinna zawierać punkty wewnątrz okręgu o r=5 i środku w początku układu 
 //współrzędnych, a druga na zewnątrz tego okręgu. Wykorzystaj funkcje modułu List.
 Console.WriteLine("\nZad_13")
+let pokaz (lista:List<'a>) =
+    let rec rek (lista:List<'a>) (i:int) (n:int) =
+        match lista with
+        | [] -> ""
+        | glowa::ogon when (i = 0 )-> rek ogon (i+1) n + ";" + glowa.ToString() + "]"
+        | glowa::ogon when i = n -> rek ogon (i+1) n + "[" + glowa.ToString()
+        | glowa::ogon when (i%10=2 && (i<>0) && i <>n) -> rek ogon (i+1) n + ";\n" + glowa.ToString()
+        | glowa::ogon -> rek ogon (i+1) n + ";" + glowa.ToString()
+    rek lista 0 (lista.Length-1)
+    
 
+let rand = new Random()
+let l100 =  [for i in 1..100 -> (rand.Next(-20, 20), rand.Next(-20, 20))]
+
+let rec DwieCzesci (l:List<int*int>) (l1:List<int*int>) (l2:List<int*int>) =
+    match l with
+    | [] -> (l1, l2)
+    | glowa::ogon when sqrt((float)(fst glowa)**2+(float)(snd glowa)**2) < 5 -> DwieCzesci ogon (glowa::l1) l2
+    | glowa::ogon  -> DwieCzesci ogon l1 (glowa::l2) 
+
+Console.WriteLine($"lista: {pokaz l100 }")
+Console.WriteLine($"Pierwsza część wewnątrz okręgu: {pokaz (fst (DwieCzesci l100 [] [])) }")
+Console.WriteLine($"Pierwsza część zewnątrz okręgu: {pokaz(snd (DwieCzesci l100 [] [])) }")
 //14. Napisz program który utworzy listę 100 dwuwymiarowych punktów losowych z przedziału 
 //od -20 do 20. Następnie napisz program, który wybierze 10 punktów, które są najbliżej 
 //początku układu współrzędnych. Wykorzystaj funkcję modułu List
 Console.WriteLine("\nZad_14")
+
 
 //15. Napisz program, który wczytując od użytkownika liczby z klawiatury zapamięta liczby
 //parzyste. (Wprowadzanie zakończ, jeżeli użytkownik poda 0). Po zakończeniu wprowadzania
