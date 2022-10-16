@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- określenie typu dokumentu -->
+<html> <!-- treść dokumentu -->
+<head>  <title>OKO</title> <!-- podstawowe informacje o dokumencie -->
+<meta charset="utf-8"> <!-- kodowanie -->
+<meta name="description" content="Opis strony">
+<meta name="keywords" content="słowa, kluczowe">
+<meta name="author" content="Autor">
+<title>Przykładowa strona</title> <!-- wyświetlany tytuł -->
+<link rel="style" href="style.css"> <!-- styl CSS -->
+<link rel="script" href="skrypty.js"> <!-- skryp JS -->
+<style>
+    div { padding: 10px; background-color: lightskyblue; }
+    div div { padding: 10px; background-color: white;}
+    div div div { background-color: blanchedalmond; text-align: center; }
+    header div, header nav { padding: 10px; background-color: white; text-align: center; }
+    footer { background-color: blanchedalmond; }
+    body { font-family: "Arial", serif; }
+    a { background-color: gray; color: white; padding: 5px; }
+    a:hover { background-color: white; color: gray; padding: 5px; transition: 0.2s ease; }
+    img { opacity: 0.5; padding: 10px; background-color: silver; }
+    img:hover { opacity: 1.0; background-color: navy; transition: 0.5s ease; }
+    </style>
+</head>
+<body> <!-- główna treść dokumentu -->
+    <div>
+        <div>
+            <div>
+                <img src="40x30_39.jpg" alt="Matrix4" width="200">
+                <hr>
+            </div>
+            <div>
+                <a href="https://www.google.com/search?q=obraz&oq=&aqs=chrome.0.69i59i450l8.10897727839j0j15&sourceid=chrome&ie=UTF-8#imgrc=EbPtwriEBbZAQM"><h2>Link1</h2></a>
+                <a href="https://www.wytwory.pl/pl/p/Obraz-na-plotnie-kolorowe-oko-70x50cm/620" target="_blank"> <h2>Link2</h2></a>
+                <a href="https://www.wytwory.pl/pl/p/Obraz-na-plotnie-kolorowe-oko-70x50cm/620#galleryName=productGallery,imageNumber=2" target="_blank"> <h2>Link3</h2></a>
+                <hr>
+            </div>
+        </div>
+        <div>
+            <input type="radio" name="color"> Czerwony <br>
+            <input type="radio" name="color"> Zielony <br>
+            <input type="radio" name="color"> Niebieski <br>
+
+            <br>
+            <input type="radio" name="zwierze"> Kot <br>
+            <input type="radio" name="zwierze"> Pies <br>
+            <input type="radio" name="zwierze"> Królik <br>
+            <br>
+            <input type="checkbox"> Kot <br>
+            <input type="checkbox"> Pies <br>
+            <input type="checkbox"> Królik <br>
+
+            <a href="https://tueuropa.pl/blog/2125/kot-czy-kotka---co-warto-wiedziec"><img src="kot.jpg" width="200" alt="montalk"></a>
+            <a href="https://zooperia.pl/blog/post/merle-pies-marmurkowy.html"><img src="pies.jpg" width="200" alt="montalk"></a>
+            <a href="https://www.maxandmrau.pl/pl/blog/co-jedza-kroliki-miniaturki-1513719125"><img src="królik.jpg" width="200" alt="montalk"></a>
+
+            <hr>
+        </div>
+        <div> END
+        </div>
+    </div>
+</body>
+</html>
