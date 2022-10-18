@@ -1,4 +1,4 @@
-//Zad2
+//L2 Task1
 //Napisac program, w którym proces 0 pobiera ze standardowego wejscia
 //liczbe typu double(std::cin » wrt;).Nastepnie proces ten wysy³a wczytana
 //liczbe do procesu 1. Proces 1 ma za zadanie wyswietlic ta liczbe na

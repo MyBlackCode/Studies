@@ -1,4 +1,4 @@
-//Zad1
+//L1 Task1
 //Napisac program z wykorzystaniem biblioteki MPI, który pozwoli na
 //uruchomienie równolegle np procesów.Kazdy proces powinien wyswietlic
 //swój numer procesu oraz liczbe wszystkich uruchomionych procesów.
