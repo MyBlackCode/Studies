@@ -1,0 +1,57 @@
+import static java.lang.Math.*;
+
+public class Triangle extends Figure {
+	////////////////////////////POLA KLASY BEGIN///////////////////////////////////////////////////////
+	private double a;
+	private double b;
+	private double c;
+	////////////////////////////POLA KLASY END///////////////////////////////////////////////////////
+
+
+	//////////////////////////// KONSTRUKTORY BEGIN ///////////////////////////////////////////////////////
+	public Triangle()
+	{
+		super();
+		a = 0.0;
+		b = 0.0;
+		c = 0.0;
+	}
+
+	public Triangle(String Color, double A, double B, double C)
+	{
+		super(Color,0.0, 0.0);
+		a = A;
+		b = B;
+		c = C;
+		count_Circumference();
+		count_Surface();
+	}
+	////////////////////////////KONSTRUKTORY END ///////////////////////////////////////////////////////
+
+
+	////////////////////////////FUNKCJE OBLICZJACE POLE I OBWOD BEGIN ///////////////////////////////////////////////////////
+	public void count_Circumference() 
+	{
+		double obwod = a+b+c;
+		super.setCircumference(obwod);
+	}
+
+	public void  count_Surface()
+	{
+		double p = (a+b+c)/2.0;
+		double pole = sqrt(p*(p-a)*(p-b)*(p-c));
+		super.setSurface(pole);
+
+	}
+	////////////////////////////FUNKCJE OBLICZJACE POLE I OBWOD END ///////////////////////////////////////////////////////
+
+
+	////////////////////////////WYSWIETLANIE DANYCH BEGIN ///////////////////////////////////////////////////////
+	public void viewData()
+	{
+		System.out.print("Trojkat w kolorze: ");
+		super.viewData();
+	}
+	////////////////////////////WYSWIETLANIE DANYCH END ///////////////////////////////////////////////////////
+
+}
