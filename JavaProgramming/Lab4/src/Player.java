@@ -13,15 +13,7 @@ public class Player {
 	
 	
 
-	////////////////////////KONSTRUKTORY  KLASY PLAYER BEGIN ////////////////////////////////
-	public Player() 
-	{
-		name = "Piotr Nowak";
-		team_name ="czerwoni";
-		age = 16;
-		n_goals =0;
-		ave_n_minutes = 0;
-	}
+	////////////////////////KONSTRUKTOR  KLASY PLAYER BEGIN ////////////////////////////////
 	
 	public Player(String Name, String Team_name, int Age, int N_goals, float Ave_n_minutes)
 	{
@@ -60,7 +52,7 @@ public class Player {
 		ave_n_minutes = Ave_n_minutes;
 		////////////WYJATEK SREDNIA Z ZAKRESU 0-90 END /////////////
 	}
-	////////////////////////KONSTRUKTOR  KLASY PLAYER BEGIN ////////////////////////////////
+	////////////////////////KONSTRUKTOR  KLASY PLAYER END ////////////////////////////////
 	
 	
 	////////////////////////PRZESLONIETA METODA toString KLASY PLAYER BEGIN ////////////////////////////////
