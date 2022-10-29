@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <title>CW_L3_T1</title>
+        <meta charset="utf -8">
+      
+    </head>
+    <body>
+        <p id="suma"></p>
+        <p id="maksimum"></p>
+        <p id="minimum"></p>
+        <script>
+            let tab = [5, 7, 21, 11, 9, 19, 13];
+            function suma(t)
+            {
+                let sum =0;
+                for (let i =0 ; i < t.length;i++) 
+                {
+                    sum = sum + t[i]
+                }
+                return sum;
+            }
+
+            function maksimum(t)
+            {
+                let maks =t[0];
+                for (let i =1 ; i < t.length;i++) 
+                {
+                    if(t[i]>maks)
+                        maks = t[i]
+                }
+                return maks;
+            }
+
+            function minimum(t)
+            {
+                let min =t[0];
+                for (let i =1 ; i < t.length;i++) 
+                {
+                    if(t[i]<min)
+                        min = t[i]
+                }
+                return min;
+            }
+             
+
+            let elementa = document.getElementById("suma");
+            let s = suma(tab);
+            elementa.innerHTML = "Suma: " + s; 
+            let elementb= document.getElementById("maksimum");
+            let maks = maksimum(tab);
+            elementb.innerHTML = "Maks: " + maks; 
+            let elementc= document.getElementById("minimum");
+            let min = minimum(tab);
+            elementc.innerHTML = "Min: " + min; 
+        </script>
+
+
+    </body>    
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <title>CW_L3_T2</title>
+        <meta charset="utf -8">
+        <script>
+        function dodaj()
+        {
+            let a = document.getElementById('liczba1').value;
+            let lA = parseFloat(a)
+            let b = document.getElementById('liczba2').value;
+            let lB = parseFloat(b)
+            let wyn = document.getElementById("wynik");
+            if (isNaN(lA) || isNaN(lB))
+            {
+                wyn.innerHTML ="Należy podać liczby";
+            }
+            else
+            {
+                wyn.innerHTML ="Wynik: " + (lA + lB);
+            }
+        }   
+
+        function odejmij()
+        {
+            let a = document.getElementById('liczba1').value;
+            let lA = parseFloat(a)
+            let b = document.getElementById('liczba2').value;
+            let lB = parseFloat(b)
+            let wyn = document.getElementById("wynik");
+            if (isNaN(lA) || isNaN(lB))
+            {
+                wyn.innerHTML ="Należy podać liczby";
+            }
+            else
+            {
+                wyn.innerHTML ="Wynik: " + (lA - lB);
+            }
+        }
+
+        function mnoz()
+        {
+            let a = document.getElementById('liczba1').value;
+            let lA = parseFloat(a)
+            let b = document.getElementById('liczba2').value;
+            let lB = parseFloat(b)
+            let wyn = document.getElementById("wynik");
+            if (isNaN(lA) || isNaN(lB))
+            {
+                wyn.innerHTML ="Należy podać liczby";
+            }
+            else
+            {
+                wyn.innerHTML ="Wynik: " + (lA * lB);
+            }
+
+        }
+
+        function dziel()
+        {
+            let a = document.getElementById('liczba1').value;
+            let lA = parseFloat(a)
+            let b = document.getElementById('liczba2').value;
+            let lB = parseFloat(b)
+            let wyn = document.getElementById("wynik");
+            if (isNaN(lA) || isNaN(lB))
+            {
+                wyn.innerHTML ="Należy podać liczby";
+            }
+            else
+            {
+                wyn.innerHTML ="Wynik: " + (lA / lB);
+            }
+
+        }
+        
+        </script>
+    </head>
+    <body>
+        <label>
+            Liczba1:
+            <input id="liczba1"><br>
+        </label>
+        <label>
+            Liczba2:
+            <input id="liczba2"> <br>
+        </label>
+        <button onclick="dodaj();">Dodawanie</button>)
+        <button onclick="odejmij();">Odejmowanie</button>)
+        <button onclick="mnoz();">Mnozenie</button>)
+        <button onclick="dziel();">Dzielenie</button>)
+        <br>
+        <span id="wynik"> Wynik: </span>
+
+    </body>    
+</html>
