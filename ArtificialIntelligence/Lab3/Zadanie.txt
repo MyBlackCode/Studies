@@ -1,0 +1,27 @@
+Zadanie
+1. Korzystając z kratki papieru w kratkę, należy wygenerować (narysować) zbiór 40 dowolnych
+punktów. Należy nanieść osie X i Y tak, aby można było odczytywać współrzędne punktów.
+Następnie zbiór punktów należy przedzielić linią, dzieląc punkty na dwie mniej więcej równe
+połowy. Punkty nad linią będą należeć do kategorii jedynek, punkty pod linią do kategorii zer.
+Wprowadź punkty do odpowiednich tabel w Pythonie.
+2. Należy graficznie pokazać wygenerowany zbiór, rozróżniając przynależność elementów
+zbioru do poszczególnych klas na przykład różnym kolorem punktów.
+3. Należy wykonać poniższe punkty:
+a. Przygotować perceptron prosty.
+b. Narysować linię decyzyjną nienauczonego perceptronu naniesioną na wykres z
+wygenerowanymi punktami (podobny do wykresu uzyskanego w punkcie 2). Należy
+odróżnić poprawnie i niepoprawnie sklasyfikowane przez perceptron próbki.
+c. Przeprowadzić uczenie neuronu, korzystając z utworzonego zbioru uczącego. Ustaw
+maksymalną liczbę iteracji uczenia całego zbioru danych na 100.
+d. Narysuj kolejny wykres z punktami. Narysuj linię decyzyjną perceptronu po
+przeprowadzonym uczeniu. Zaznacz punkty poprawnie i niepoprawnie
+sklasyfikowane. Należy dorysować linię decyzyjną perceptronu sprzed procesu
+uczenia (punkt b).
+4. Dodatkowe zadania:
+a. Zatrzymaj uczenie perceptronu wtedy, gdy perceptron będzie nauczony, czyli gdy
+liczba błędów uzyskanych dla całego kompletu próbek wyniesie zero. Podaj liczbę
+iteracji.
+b. Sprawdzić działanie perceptronu podając 3 nowe, dowolne punkty (np.
+wprowadzone współrzędne z klawiatury), którymi perceptron nie zostały wcześniej
+uczony. Sprawdź jak je sklasyfikował perceptron. Umieść te dodatkowe punkty na
+wykresie z linią decyzyjną.
