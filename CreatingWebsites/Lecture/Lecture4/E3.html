@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            window.onload = function() {
+                let nowe = window.open("/","nowe","status=no,toolbar=no,menubar=no,width=300,height=300");
+                nowe.document.body.innerHTML = "<b>TEST</b>";
+                nowe.window.onunload = function() {
+                    alert("Okno jest zamykane");
+                    document.body.innerHTML = "ZMIANA";
+                }
+            }
+        </script>
+    </head>
+    <body id="main">
+        PODSTAWA   
+    </body>
+</html>

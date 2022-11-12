@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+    </head>
+    <body>
+        <div>
+            <span>Tekst</span>
+            <a href="start.html">Start</a>
+            <a href="start.html">Kontakt</a><br>
+        </div>
+    </body>
+    <script>
+        let kolekcja = document.querySelector("body div"); // pierwszy pasujący element
+        // poruszanie się za pomocą tablicy
+        let potomkowie = kolekcja.children;
+        for (let potomek of potomkowie) {
+            if (potomek.tagName == "A") {
+                kolekcja.removeChild(potomek); // zmieniamy rozmiar kolekcji w trakcie - błąd
+          }
+        }
+    </script>
+</html>

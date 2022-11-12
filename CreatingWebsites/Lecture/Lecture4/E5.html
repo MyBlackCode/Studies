@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div { width: 200px; height: 100px; background: lightblue; }
+            div p { text-align: center; background: lightskyblue; }
+        </style>     
+    </head>
+    <body>
+    </body>
+    <script>
+        // dodanie div do body
+        let menu = document.createElement("div");
+        document.body.append(menu);
+        // dodanie p wewnątrz diva
+        let nazwa = document.createElement("p");
+        nazwa.innerHTML = "MENU";
+        menu.append(nazwa);
+    </script>
+</html>

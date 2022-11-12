@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function klikniecie(event) {
+            console.log("Kliknięcie", event.clientX, event.clientY);
+            }
+            window.onclick = klikniecie; // sposób 1
+            window.onkeyup = function(event) { // sposób 2
+                console.log("Wciśnięcie", event.key, event.keyCode);
+                }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

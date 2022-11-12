@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+    </head>
+    <body>
+        <div>
+            <span>Tekst</span>
+            <a href="start.html">Start</a>
+            <a href="start.html">Kontakt</a><br>
+        </div>
+    </body>
+    <script>
+        let kolekcja = document.querySelector("body div"); // pierwszy pasujący element
+        // poruszanie się za pomocą następnego elementu
+        let element = kolekcja.firstElementChild;
+        let index = 0;
+        while (element != null) {
+            console.log(index++, "Element typu: ", element.tagName, ", zawartosć: ", element.innerHTML);
+            element = element.nextElementSibling; // przejście do następnego sąsiadującego elementu
+        }
+        
+        // poruszanie się za pomocą tablicy
+        let potomkowie = kolekcja.children;
+        for (let i = 0; i < potomkowie.length; i++) {
+            console.log(i, "Element typu: ", potomkowie[i].tagName, ", zawartosć: ", potomkowie[i].innerHTML);
+        }
+    </script>
+</html>

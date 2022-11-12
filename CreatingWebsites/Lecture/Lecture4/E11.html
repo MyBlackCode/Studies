@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <meta charset="utf-8">
+        <style>
+            @keyframes pierwsza {
+                from { background: red; }
+                to { background: yellow; }
+            }
+
+            @keyframes druga {
+                0% { background: red; }
+                50% { background: green; }
+                100% { background: yellow; }
+            }
+            
+            div { width: 100px; height: 100px; margin: 10px; float: left; }
+            .a1 { animation-name: pierwsza; animation-duration: 5s; }
+            .a2 { animation-name: druga; animation-duration: 5s; }
+        </style>
+    </head>
+    <body>
+        <div class="a1"></div>
+        <div class="a2"></div>
+    </body>
+    
+</html>
