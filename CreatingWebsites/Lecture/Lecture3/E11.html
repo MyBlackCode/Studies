@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"> 
+    </head>
+    <body>
+        <script>
+            let imie1 = new String("tomek");
+            let imie2 = "tomek";
+            let imie3 = new String("tomek");
+            console.log(typeof imie1); // object
+            console.log(typeof imie2); // string
+            console.log(imie1 == imie2); // true
+            console.log(imie1 == imie3); // false !!!!!!!!!!
+            console.log(imie3 == imie2); // true
+            
+            //dodawanie uwaga na concatenacje
+            let test = "15" + 10 + 12; // "151012"
+            console.log(test); 
+            test = 15 + 10 + "12"; // "2512"
+            console.log(test); 
+            test = "15" + (10 + 12); // "1522"
+            console.log(test); 
+
+            //inne operatory nie są używane do łączenia tekstu
+            test = "15" - 10 - 12; // -7
+            console.log(test);
+            test = 15 - 10 - "12"; // -7
+            console.log(test);
+            test = "15" - (10 - 12); // -17
+            console.log(test);
+
+        </script>
+    </body>
+</html>
