@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+        </style>
+    </head>
+    <body>
+        <table border="1" id = "dane">
+        </table>
+        <script>
+            class Osoba {
+                constructor(imie, nazwisko, rokUrodzenia) {
+                    this.imie = imie;
+                    this.nazwisko = nazwisko;
+                    this.rokUrodzenia = rokUrodzenia;
+                }
+
+                wypiszInformacje()
+                {
+                    console.log(this.imie, this.nazwisko, this.rokUrodzenia);
+                }
+            }
+
+            var osoba1 = new Osoba("Paulina", "Mlynarczyk", 2000);
+            var osoba2 = new Osoba("Artur", "Andryskiewicz", 1995);
+            var osoba3 = new Osoba("Jan", "Kowalski", 1980); 
+            osoba1.wypiszInformacje();
+            osoba2.wypiszInformacje();
+            osoba3.wypiszInformacje();
+
+            class Pracownik extends Osoba {
+                constructor(imie, nazwisko, rokUrodzenia, pensja, premia) {
+                    super(imie, nazwisko, rokUrodzenia)
+                    this.pensja = pensja;
+                    this.premia = premia;
+                }
+
+                wypiszInformacje()
+                {
+                    super.wypiszInformacje();
+                    console.log(this.pensja, this.premia);
+                }
+
+                obiektDOM()
+                {
+                   return `<tr><td>${this.imie} ${this.nazwisko[0]}</td><td>${this.pensja}</td><td>${this.premia}</td></tr>`;
+                }
+
+
+            }
+            var pracownik1 = new Pracownik("Paulina", "Mlynarczyk", 2000, 30000, 500);
+            var pracownik2 = new Pracownik("Artur", "Anddryskiewicz", 1995, 3000, 500);
+            var pracownik3 = new Pracownik("Jan", "Kowalski", 2000, 4000, 500);
+            let ab = document.getElementById("dane");
+           
+            ab.innerHTML += pracownik1.obiektDOM();
+            ab.innerHTML += pracownik2.obiektDOM();
+            ab.innerHTML += pracownik3.obiektDOM();
+            
+            
+            
+        </script>
+</body>
+</html>
