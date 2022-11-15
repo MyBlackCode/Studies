@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CW_L4_T1</title>
+        <style>
+            #hiperlacza { background: silver; border: 1px solid black; display: inline-block; }
+        </style>
+    </head>
+    <body>
+        <div id="tresc">Witaj na <a href="start.html">Mojej stronie</a>, polecam odwiedzić
+        takie serwisy jak: <ul><li><a href="http://google.com">Google</a></li><li><a
+        href="https://pl.wikipedia.org/wiki/Wiki">Wikipedia</a></li><li><a
+        href="https://stackoverflow.com/">StackOverflow</a></li></ul>Więcej informacji o mnie można
+        znaleźć <a href="omnie.html">tutaj</a>.</div>
+        <div>Wszystkie linki na stronie:<br><div id="hiperlacza"></div></div>
+        <script>
+            let linki = document.querySelectorAll("#tresc a")
+
+            let hiper = document.getElementById("hiperlacza")
+
+            for(let i = 0; i < linki.length; i++) {
+                let nowyElemet = document.createElement('li');
+                nowyElemet.innerHTML = linki[i];
+                let r = Math.floor(Math.random() * 255);
+                let g = Math.floor(Math.random() * 255);
+                let b = Math.floor(Math.random() * 255);
+                nowyElemet.style.backgroundColor="rgb(" + r + ", " + g + ", " + b + ")";
+                hiper.appendChild(nowyElemet);
+
+                linki[i].remove();
+
+                let br = document.createElement("br");
+                hiper.appendChild(br);
+
+
+             
+                let kopia = nowyElemet.cloneNode(true);
+                hiper.appendChild(kopia);
+            }
+        </script>
+    </body>
+</html>
