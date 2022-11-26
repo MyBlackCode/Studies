@@ -1,0 +1,30 @@
+**** zapis lambda ****
+Maj Jan lat: 52
+	Kierownik etat: 0.5
+	placa_pod=7000.0PLN -> pensja=2555.0000000000005
+--------------------------------------
+**** zapis lambda ****
+Bak Olga lat: 29
+	Ksiegowa etat: 1.0
+	placa_pod=6000.0PLN -> pensja=4380.000000000001
+--------------------------------------
+**** zapis lambda ****
+Piech Anna lat: 29
+	Ksiegowa etat: 0.7
+	placa_pod=4800.0PLN -> pensja=2452.8
+--------------------------------------
+**** zapis lambda ****
+Jach Ewa lat: 27
+	Ksiegowa etat: 1.2
+	placa_pod=6000.0PLN -> pensja=5256.000000000001
+--------------------------------------
+**** zapis lambda ****
+Nowak Jan lat: 24
+	Kierowca etat: 1.0
+	placa_pod=5200.0PLN -> pensja=4732.0
+--------------------------------------
+**** zapis lambda ****
+Rak Piotr lat: 21
+	Kierowca etat: 1.25
+	placa_pod=4000.0PLN -> pensja=4550.0
+--------------------------------------

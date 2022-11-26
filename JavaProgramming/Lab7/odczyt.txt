@@ -1,0 +1,6 @@
+Nowak Jan 1.0 5200.0 24 Kierowca
+Piech Anna 0.7 4800.0 29 Ksiegowa
+Jach Ewa 1.2 6000.0 27 Ksiegowa
+Rak Piotr 1.25 4000.0 21 Kierowca
+Maj Jan 0.5 7000.0 52 Kierownik
+Bak Olga 1.0 6000.0 29 Ksiegowa
