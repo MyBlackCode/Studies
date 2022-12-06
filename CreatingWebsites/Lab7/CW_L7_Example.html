@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="p5.min.js"></script>
+    </head>
+    <body>
+        <main></main>
+        <script>
+            function setup() {
+                createCanvas(800, 400, WEBGL); // inicjalizacja obszaru roboczego
+            }
+            
+            function draw() {
+                push()
+                background(50,100,200); // wymazanie obszaru - kolor jasno-szary
+                translate(200,0,0)
+                rotateY(frameCount*0.01);
+                box(100);
+                pop()
+                push()
+                translate(-200,0,0);
+                rotateY(frameCount*-0.01);
+                box(100);
+                pop()
+            }
+        </script>
+    </body>
+</html>
