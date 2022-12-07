@@ -17,7 +17,6 @@
 //Do pomiaru czasu wykorzystać funkcję MPI_Wtime():
 //double tBegin, tEnd;
 //tBegin = MPI_Wtime();
-
 #include <iomanip>
 #include <iostream>
 #include <cstdlib>
