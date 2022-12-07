@@ -6,7 +6,6 @@
 //MPI_Reduce() wyliczana jest maksymalna liczba wylosowana w procesach.
 //Liczba ta ma zostac przekazana do procesu 1. Proces ten ma za zadanie
 //wypisac ja na standardowe wyjscie.
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
