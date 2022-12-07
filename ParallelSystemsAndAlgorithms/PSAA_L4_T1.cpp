@@ -9,7 +9,6 @@
 //4. Każdy proces powinien obliczyć sumę odebranych części wektora (C = A + B).
 //5. Korzystając z funkcji MPI_Gather należy zapisać części wektora z każdego procesu w wektorze C procesu zerowego.
 //6. Proces zerowy powinien wyświetlić wektory A, B i C na standardowym wyjściu.
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>

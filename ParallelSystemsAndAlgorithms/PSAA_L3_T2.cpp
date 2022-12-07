@@ -6,7 +6,6 @@
 //Nastepnie kazdy proces wylicza maksymalny element wsród wylosowanych
 //elementów tablicy. Pozostała czesc programu jest taka sama jak w przypadku
 //Zadania 1.
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
