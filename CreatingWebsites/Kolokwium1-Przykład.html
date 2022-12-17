@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #wiersz1{background: greenyellow;}
+            tr{ height: 50px;}
+            div > a{ display:block; background: blueviolet;}
+        </style>
+        <script>
+            function wypisz(event)
+            {
+                var element = document.getElementById("pobierz").value;
+                console.log(element);
+                document.getElementById("wynik").innerHTML= element;
+            }
+
+            function sprawdz()
+            {
+                var sprawdzane = document.getElementById("pobierz").value;
+                var div = document.getElementById("wstaw");
+                if(parseInt(sprawdzane)>0 && parseInt(sprawdzane) <=10)
+                {
+                    for(i=0; i<sprawdzane;i++)
+                    {
+                        var wstawInput = document.createElement("input");
+                        wstawInput.setAttribute("type","text");
+                       // wstawInput.setAttribute("id",`${i}`);
+                        div.append(document.createElement("br"));
+                        div.append(wstawInput);
+                    }
+                }
+                else
+                {
+                    document.write("blad");
+                }
+            }
+
+            function pobierzWatosci()
+            {
+                var parent = document.getElementById("wstaw");
+                var potomkowie = parent.children;
+                //var sprawdzane = document.getElementById("pobierz").value;
+                var sum = 0;
+                for(i=0; i<potomkowie.length;i++)
+                {
+                    //let el = document.getElementById(`${i}`);
+                    //console.log(el);
+                    //sum += parseInt(el.value);
+                   if (potomkowie[i].tagName == "INPUT") {
+                        sum += parseInt(potomkowie[i].value);
+                    }
+                }
+                alert(sum);
+            }
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <tr id="wiersz1"> <td><a href="https://www.google.pl">google</a></td><td></td><td></td></tr>
+            <tr> <td><a href="https://allegro.pl">allegro</a></td><td></td><td></td></tr>
+            <tr> <td><a href="https://helion.pl">helion</a></td><td></td><td></td></tr>
+            <tr> <td><a href="https://helion.pl">helion</a></td><td></td><td></td></tr>
+        </table>
+        <div>
+            tekst
+            <a href="https://allegro.pl">allegro</a>
+            <a href="https://www.google.pl">google</a>
+            <a href="https://helion.pl">helion</a>
+            tekst
+        </div>
+        <input id="pobierz" type="text" onkeydown="wypisz(event);"/>
+        <span id ="wynik"> Wynik</span> <br>
+        <input type="submit" value="przeslij" id="przycisk" onclick="sprawdz();"/>
+        <div id="wstaw"></div>
+        <input id="pobierzWartosci" type="submit"  value = "przeslijWartosci";  onclick="pobierzWatosci();"/>
+        <script>
+            let zbierzElementTd = document.querySelectorAll("td");
+            for (let wezel of zbierzElementTd) {
+                if(wezel.textContent.length == 0)
+                    wezel.innerHTML = Math.floor(Math.random() * 100) + 1
+            }
+
+            class Projekt{
+                constructor(czas, ocena) {
+                    this.czas = czas;
+                    this.ocena = ocena;
+                    this.osoby = new Array();
+                }
+                doddajOsobe(osoba) {
+                    this.osoby.push(osoba);
+                }
+                wypiszInformacje()
+                {
+                    console.log(this.czas, this.ocena);
+                    for(let i=0;i<this.osoby.length;i++)
+                    {
+                        console.log(this.osoby[i]);
+                    }
+                }
+            }
+            let projekt = new Projekt("2h",5.0);
+            projekt.doddajOsobe("Jan Kowalski");
+            projekt.doddajOsobe("Ewa Nowak");
+            projekt.wypiszInformacje();
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+            li{ background-color: rebeccapurple; width: 150px; margin: 10px; padding: 10px; border-radius: 10px;}
+            #wynik{ position: fixed;}
+            li:hover{
+                width: 300px; background: blue;
+            }
+        </style>
+        <script>
+            function oblicz()
+            {
+                let a =document.getElementById("pole1").value;
+                let b=document.getElementById("pole2").value;
+                let w = parseFloat(a)/(parseFloat(b)*parseFloat(b));
+                document.getElementById("wynik").innerHTML = w;
+
+                if(w>30)
+                {
+                    document.querySelector("body").style.background = "purple"; 
+                }
+                else if(w<18)
+                {
+                    document.querySelector("body").style.background = "orange"; 
+                }
+                if( w>=18&& w<=30)
+                {
+                    document.querySelector("body").style.background = "green"; 
+                }
+            }
+
+            window.onload = function() {
+                    let a = document.querySelector("ol");
+                    for(i=0;i<5;i++)
+                    {
+                        let el = document.createElement("li")
+                        el.textContent = Math.random();
+                        a.appendChild(el);
+                    }
+
+                }
+        
+        </script>
+    </head>
+    <body>
+        <ol>
+            <li>Raz</li>
+            <li>Dwa</li>
+            <li>Trzy</li>
+            <li>Cztery</li>
+            <li>Piec</li>
+            <li>Szesc</li>
+            <li>Siedem</li>
+        </ol>
+        <input type="text" id = "pole1">Waga
+        <input type="text" id="pole2">Wysokość
+        <input type="submit" value="Oblicz BMI" onclick="oblicz()" />
+        <br>Wynik: 
+        <span id="wynik"></span>
+        <div>wynik</div>
+    </body>
+</html>

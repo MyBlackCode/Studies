@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"><script src="chart.js"></script>
+    </head>
+    <body>
+        <div style="width: 600px; height: 400px;">
+            <canvas id="wykres" width="600" height="400"></canvas>
+        </div>
+        X: <input id="X" type="text"  />
+        Y: <input id="Y" type="text" />
+        <input id="pobierz" type="submit"  value = "Dodaj punkt"; onclick="pobierz();"/>
+        <input id="usun" type="submit"  value = "Usun punkt poczatkowy"; onclick="usun();"/>
+        
+    <script>
+
+        const dane = {
+            datasets: [ {
+                label: "punkty",
+                data: [
+                    { x: 0, y: 0 },
+                    { x: 1, y: 0 },
+                    { x: 1, y: 1 }
+                ],
+                showLine: true,
+                borderColor: "red",
+                backgroundColor: "violet",
+                pointRadius: 10
+            } ]
+        }
+        const ctx = document.getElementById("wykres").getContext("2d");
+        const wykres = new Chart(ctx, { type: "scatter", data: dane });
+    
+        function pobierz()
+            {
+                var wx = document.getElementById("X").value;
+                var wy = document.getElementById("Y").value;
+                wykres.data.datasets[0].data.push({x: parseFloat(wx), y: parseFloat(wy)});
+                wykres.update();
+            }
+        function usun()
+        {
+            wykres.data.datasets[0].data.shift();
+            wykres.update();
+        }
+    </script>
+</body>
+</html>

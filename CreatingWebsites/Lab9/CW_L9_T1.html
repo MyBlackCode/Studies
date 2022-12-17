@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="chart.js"></script>
+    </head>
+    <body>
+        <div style="width: 600px; height: 400px;">
+            <canvas id="wykres" width="600" height="400"></canvas>
+        </div>
+        <script>
+            const dane = {
+                labels: [ "18-24", "25-34", "35-44", "45-54", "55-64", "65+" ],
+                datasets: [
+                    { label: "2020",
+                    data: [ 8280, 17965, 31335, 39511, 34626, 26399 ],
+                    backgroundColor: ["rgb(50, 100, 200, 0.3)", "rgb(200, 50, 200,0.4)", "rgb(150, 100, 20, 0.5)", "rgb(50, 50, 150, 0.6)", "rgb(100, 200, 100, 0.7)", "rgb(200, 200, 200, 0.8)"] }
+                ]
+            }
+            const opcje = {
+                plugins: {
+                    title: { display: true,
+                        text: "Przeciętna zaległość w różnych grupach wiekowych" },
+                    legend: { position: "right" }
+                }
+            }
+            const ctx = document.getElementById("wykres").getContext("2d");
+            const wykres = new Chart(ctx, { type: "doughnut", data: dane, options: opcje });
+        </script>
+    </body>
+</html>
