@@ -9,13 +9,12 @@
 double start, stop;
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
     int n;
     float** E,** A; 
-    float* a,* b, *c,*z;
-    float start, stop;
-    
+    float* a,* b, *c,*z, alfa = 2, beta = 3;
+    double start, stop;
     srand(time(NULL));
 
     cout << "Wproadz n: ";
@@ -27,8 +26,7 @@ int main()
     c = new float[n];
     z = new float[n];
 
-
- //cout << "Wektor a: "; 
+   // cout << "Wektor a: "; 
     for (int i = 0; i < n; i++)
     {
         A[i] = new float[n];
@@ -39,24 +37,24 @@ int main()
     }
     //cout << endl << endl;
      
-  /*  cout << "Wektor c: "; 
-    for (int i = 0; i < n; i++)
-    {
-        cout << c[i] << " ";
-    }
-    cout << endl << endl;
+    //cout << "Wektor c: "; 
+    //for (int i = 0; i < n; i++)
+    //{
+      //  cout << c[i] << " ";
+    //}
+   // cout << endl << endl;
 
-    cout << "Macierz A:" << endl;*/
+    //cout << "Macierz A:" << endl;
     for (int i = 0; i < n; i++){
          for (int j = 0; j < n; j++)
         {
             A[i][j] = rand() % 1001/100.f+ 10.0;
             E[i][j] = rand() % 1001/100.f+ 10.0;
-           // cout << A[i][j] << " ";
+            //cout << A[i][j] << " ";
         }
-        //cout << endl;
+       // cout << endl;
     }
-   //cout << endl << endl;
+    //cout << endl << endl;
 
    /* cout << "Macierz E:" << endl;
     for (int i = 0; i < n; i++){
@@ -66,50 +64,41 @@ int main()
         }
         cout << endl;
     }
-    cout << endl << endl;
-    */
+    cout << endl << endl; */
+    
 
     start = omp_get_wtime();
-    float alfa = 1.1;
-    float beta = 2.2;
-
-    #pragma omp parallel
     for (int m = 0; m < 5000; m++){
 
-            #pragma omp for
-            for (int j = 0; j < n; ++j) {
-                for (int k = 0; k < n; ++k) {
-                    E[j][k] = (beta * E[j][k]) - A[j][k];
-                }
+
+        for(int i = 0; i < n; i++ )
+            for(int j = 0; j < n; j++ )
+            {
+                E [ i ][ j ] = beta * E [ i ][ j ] - A [ i ][ j ];
             }
 
-            alfa = 0;
-            #pragma omp barrier
-            #pragma omp for reduction(+: alfa)
-            for (int j = 0; j < n; ++j) {
-                alfa += (a[j] * c[j]);
-            }
+        alfa = 0;
+        for(int i = 0; i < n; i++ )
+            alfa=  a[i] * c[i];
 
-            #pragma omp for
-            for (int j = 0; j < n; ++j) {
-                b[j] = c[j] + (alfa * a[j]);
-            }
+        for(int i = 0; i < n; i++ )
+            b[i] =  c[i] + alfa*a[i];
 
-            #pragma omp for
-            for (int j = 0; j < n; ++j) {
-                z[j] = 0;
-                for (int k = 0; k < n; ++k) {
-                    z[j] += E[j][k] * b[k];
-                }
+        for(int i = 0; i < n; i++ ){
+            z[i] = 0;
+            for(int j = 0; j < n; j++ )
+            {
+                z[i] += E[i][j]*b[j];
             }
+            
+        }
+        //cout << endl << endl;
 
-            #pragma omp for reduction(+: beta)
-            for (int j = 0; j < n; ++j) {
-                beta += (z[j] * b[j]);
-            }
+        for(int i = 0; i < n; i++ )
+            beta +=  z[i] + b[i];
     }
     stop = omp_get_wtime(); 
-    /*    cout << "Wektor a: "; 
+    /*cout << "Wektor a: "; 
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << " ";
@@ -142,30 +131,13 @@ int main()
         cout << endl;
     }
     cout << endl << endl;
-    cout << "Wektor b: "; 
-    for (int i = 0; i < n; i++)
-    {
-        cout << b[i] << " ";
-    }
-    cout << endl << endl;
-    cout << "Wektor z: "; 
+        cout << "Wektor z: "; 
     for (int i = 0; i < n; i++)
     {
         cout << z[i] << " ";
-    }
-    cout << endl << endl;
-    cout << alfa<<endl;
-    cout << beta<<endl; */
-    
-    cout <<"Sekwencyjnie czas wynosi:" << setprecision(16) << stop - start << endl;
-    delete[] z;
-    delete[] b;
-    delete[] c;
-    for (int i = 0; i<n; i++){
-		delete [] A[i];
-        delete [] E[i];
-    }
-    
-    delete[] A;
-    delete[] E;
+    } */
+    //cout << endl << endl;
+   // cout << alfa<<endl;
+    //cout << beta<<endl;
+	std::cout <<"Sekwencyjnie czas wynosi:" << std::setprecision(16) << stop - start << std::endl;
 }   
