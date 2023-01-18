@@ -1,0 +1,47 @@
+<!--Utworzyć strukturę dokumentu HTML z sekcjami html, head i body (1 pkt) +
+Wykorzystując bibliotekę Chart.js wyświetlić wykres kołowy pokazujący cztery dowolne wartości
+liczbowe z przypisanymi etykietami. (3 pkt)
+Każda część wykresu kołowego powinna być wyświetlana w innym kolorze. (2 pkt)+
+Napisać skrypt JavaScript, który co jedną sekundę zwiększy o 10 jedną losowo wybraną daną liczbową
+z wykresu i uaktualni wykres. (2 pkt)+ --> 
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <script src="chart.js"></script>
+    </head>
+
+    <body>
+
+        <div style="width: 600px; height: 400px;">
+            <canvas id="wykres" wieght="600px" heigt="400"></canvas>
+        </div>
+
+        <script>
+            const dane = {
+                labels:["ocena 2","ocena 3","pcena 4", "ocena 5"],
+                datasets:[
+                    {
+                        label:"uczen1",
+                        data:[1,1,1,1],
+                        background:["rgb(255,0,0,40)","rgb(0,255,0,40)","rgb(0,0,255,40)","rgb(255,0,255,40)"]
+                    }
+                ]
+            }
+
+            const ctx = document.getElementById("wykres").getContext("2d");
+            const wykres = new Chart(ctx,{type:"pie", data:dane});
+
+            setInterval(
+                function(){
+                    let i = Math.floor(Math.random()*4);
+                    wykres.data.datasets[0].data[i]+=10;
+                    wykres.update();
+                },
+                1000
+            )
+
+        </script>
+
+    </body>
+</html>

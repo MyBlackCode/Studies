@@ -1,0 +1,53 @@
+<!--
+Utworzyć strukturę dokumentu HTML z sekcjami html, head i body (1 pkt)
+Wykorzystując bibliotekę p5.js wyświetlić obracający się (według dowolnej osi) sześcian (3 pkt)
+Zmienić kolor obramowania oraz wypełnienia sześcianu, dodać wybrane przez siebie punkty światła
+oraz zmienić kolor sceny (2 pkt)+
+Umieścić na stronie trzy przyciski: sześcian, sfera, stożek. Napisać skrypt JavaScript, który zmieni
+wyświetlany na scenie obiekt w zależności od klikniętego przycisku (na sześcian, sferę, stożek) (2 pkt)+
+-->
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <script src="p5.min.js"></script>
+    </head>
+    <body>
+        <main></main>
+        <button onclick="change('box')">Box</button>
+        <button onclick="change('sphere')">Sphere</button>
+        <button onclick="change('cone')">Cone</button>
+
+        <script>
+            function setup(){
+                createCanvas(640,480,WEBGL);
+            }
+            let currentObject ="box";
+
+            function change(newObject){
+                currentObject=newObject;
+            }
+
+            let kat = 0.0;
+            function draw(){
+                background(0,200,0);
+                fill(255,0,0);
+                stroke(0,0,255);
+                pointLight(255,255,0,0,-10,40);
+                pointLight(255,0,0,0,0,50);
+                pointLight(255,0,255,0,0,60);
+                rotateY(kat);
+                if(currentObject=="box"){
+                    box();}
+                else if(currentObject=="sphere"){
+                    sphere(40);
+                }
+                else if(currentObject="cone"){
+                    cone();
+                }
+                kat+=0.01;
+            }
+        </script>
+
+    </body>
+</html>
